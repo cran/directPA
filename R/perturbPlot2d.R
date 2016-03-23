@@ -1,10 +1,10 @@
-#' Direction Enrichment Plot for Pathways and Kinases
+#' Perturbation Plot
 #'
 #' This function takes in a matrix of test statistics with two columns (2-dimensional space) and the 
 #' annotation list such as pathway annotation or kinase-substrate annotation, and visualize the enrichment
 #' of pathways or kinases in direction specific manner.
 #' 
-#' @usage directEnrichPlot2d(Tc, annotation, minSize=5, ...)
+#' @usage perturbPlot2d(Tc, annotation, minSize=5, ...)
 #' @param Tc a numeric matrix. The columns are genes or phosphorylation sites and the columns are treatments 
 #' vs control statistics.
 #' @param annotation a list with names correspond to pathways or kinases and elements correspond to genes or
@@ -21,9 +21,9 @@
 #' # load the kinase-substrate annoations
 #' data(PhosphoSite)
 #' 
-#' directEnrichPlot2d(Tc=HEK, annotation=PhosphoSite.mouse, cex=3, xlim=c(-8, 3), ylim=c(-6, 3))
+#' perturbPlot2d(Tc=HEK, annotation=PhosphoSite.mouse, cex=3)
 #' 
-directEnrichPlot2d <- function(Tc, annotation, minSize=5, ...) {
+perturbPlot2d <- function(Tc, annotation, minSize=5, ...) {
 
   # step 1. convert statistics into z-scores
   Tc.zscores <- apply(Tc, 2, function(x){qnorm(rank(x)/(nrow(Tc)+1))})
@@ -45,7 +45,7 @@ directEnrichPlot2d <- function(Tc, annotation, minSize=5, ...) {
    Z2 <- unlist(sapply(DE, function(x){x[2]}))
    
    # visualization
-   plot(Z1, Z2, col="darkblue", pch=16, ...)
+   plot(Z1, Z2, col="darkblue", pch=16, xlab=colnames(Tc)[1], ylab=colnames(Tc)[2], ...)
    textxy(Z1,Z2, names(DE), col="black", cex=1)
    abline(v=0, h=0, col="gold", lty=2)
    abline(a=0, b=1, col="darkgreen", lty=2)
