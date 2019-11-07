@@ -8,7 +8,7 @@
 #' @usage directPA(Tc, direction, annotation, minSize=5, gene.method="OSP", 
 #' path.method="Stouffer", visualize=TRUE, ...)
 #' 
-#' @param Tc a numeric matrix. The columns are genes and the columns are treatments vs control statistics.
+#' @param Tc a numeric matrix. Rows are genes and columns are treatments vs control statistics.
 #' @param direction the direction to be tested for enrichment. Either specified as a degree for 
 #' two-dimensional analysis or as contrast (in a triplet) for three-dimensional analysis.
 #' @param annotation a list with names correspond to pathways and elements correspond to genes belong to 
@@ -109,8 +109,8 @@ directPA <- function(Tc, direction, annotation, minSize=5, gene.method="OSP", pa
     gst <- t(sapply(annotation, pathwayStats, gene.zscores, minSize=5, path.method))
 
     result <- list()
-    result$gene.pvalues <- gene.pvalues
-    result$gst <- gst
+    result$gene.pvalues <- sort(gene.pvalues)
+    result$pathways <- gst[order(as.numeric(gst[,1])),]
     return(result)
   }
 }

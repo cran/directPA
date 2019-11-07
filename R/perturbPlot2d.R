@@ -13,6 +13,11 @@
 #' that are smaller than the minSize will be removed from the analysis.
 #' @param ... parameters for controling the plot.
 #' @return a list of coordinates for pathways or kinases
+#' @import grDevices
+#' @import graphics
+#' @import stats
+#' @import calibrate
+#' @import rgl
 #' @export 
 #' @examples
 #' # load the phosphoproteomics dataset
