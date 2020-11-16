@@ -68,10 +68,23 @@ directPA <- function(Tc, direction, annotation, minSize=5, gene.method="OSP", pa
     gene.pvalues <- apply(Tc.rotated, 1, geneStats, gene.method)
     
     if (visualize == TRUE) {
-      HC = rainbow(length(gene.pvalues)*1.2)
-      plot3d(Tc, col=HC[rank(gene.pvalues)], size=5, ...)
-      abclines3d(x=0, y=0, z=0, a=diag(3), col="black", lwd=3)
-      abclines3d(x=0, a=direction, col="pink", lwd=5)
+      #HC = rainbow(length(gene.pvalues)*1.2)
+      #plot3d(Tc, col=HC[rank(gene.pvalues)], size=5, ...)
+      #abclines3d(x=0, y=0, z=0, a=diag(3), col="black", lwd=3)
+      #abclines3d(x=0, a=direction, col="pink", lwd=5)
+      
+      df <- data.frame(Tc)
+      colnames(df) <- c("x", "y", "z")
+      df$pvalue <- gene.pvalues[rownames(df)]
+      
+      my_col = colorRampPalette(rainbow(12))(100)
+      
+      p <- plotly::plot_ly(df, x=~x, y=~y, z=~z, color=~pvalue, colors=my_col, size=5)
+      p <- plotly::add_markers(p) 
+      p <- plotly::layout(p, scene = list(xaxis = list(title = colnames(Tc)[[1]]),
+                                     yaxis = list(title = colnames(Tc)[[2]]),
+                                     zaxis = list(title = colnames(Tc)[[3]])))
+      print(p)
     }
     
     # step 4. integrate statistics for pathways

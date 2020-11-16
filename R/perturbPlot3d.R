@@ -34,19 +34,28 @@ perturbPlot3d <- function(Tc, annotation, minSize=5, ...) {
   
   # step3. filter DE that has 0 element
   DE <- DE[which(sapply(DE, length) != 0)]
-  Z1 <- unlist(sapply(DE, function(x){x[1]}))
-  Z2 <- unlist(sapply(DE, function(x){x[2]}))
-  Z3 <- unlist(sapply(DE, function(x){x[3]}))
+
+  # step4. visualise
+  df <- data.frame(do.call(rbind, lapply(DE, function(x) unlist(unname(x)))))
+  colnames(df) <- c("Z1", "Z2", "Z3")
+  df$pathway <- rownames(df)
   
-  # visualization
-  plot3d(Z1, Z2, Z3, col="darkblue", pch=16, xlab=colnames(Tc)[1], ylab=colnames(Tc)[2], ...)
-  text3d(Z1, Z2, Z3, names(DE), col="black", cex=1)
-  abclines3d(x=0, y=0, z=0, a=diag(3), lwd=3, col="gold")
+  my_col = colorRampPalette(rainbow(12))(100)
+  t <- list(family = "sans serif", size = 14, color = "black")
+  
+  p <- plotly::plot_ly(df, x=~Z1, y=~Z2, z=~Z3, size=5, text=df$pathway)
+  p <- plotly::add_markers(p)
+  p <- plotly::add_text(p, textfont = t, textposition = "top right")
+  p <- plotly::layout(p, scene = list(xaxis = list(title = colnames(df)[[2]]),
+                                yaxis = list(title = colnames(df)[[3]]),
+                                zaxis = list(title = colnames(df)[[4]])))
+  print(p)
+  
   
   ## return the results
   result <- list()
-  result$Z1 <- Z1
-  result$Z2 <- Z2
-  result$Z3 <- Z3
+  result$Z1 <- df$Z1
+  result$Z2 <- df$Z2
+  result$Z3 <- df$Z3
   return(result)
 }
