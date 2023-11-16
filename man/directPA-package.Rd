@@ -14,8 +14,7 @@ corresponding controls.
 \tabular{ll}{
 Package: \tab directPA\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
-Date: \tab 2013-10-21\cr
+Version: \tab 1.5.1\cr
 License: \tab GPL-3\cr
 }
 
@@ -25,5 +24,5 @@ Pengyi Yang <yangpy7@gmail.com> & Ellis Patrick <epatrick87@gmail.com>
 }
 \references{
 Pengyi Yang, Ellis Patrick, Shi-Xiong Tan, Daniel J. Fazakerley, James Burchfield, Christopher Gribben, Matthew J. Prior, 
-David E. James, Yee Hwa Yang, Direction pathway analysis of large-scale proteomics data reveals novel features of the insulin action pathway, submitted.
+David E. James, Yee Hwa Yang, Direction pathway analysis of large-scale proteomics data reveals novel features of the insulin action pathway, Bioinformatics, 30(6), 808-814, 2014.
 }

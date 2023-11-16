@@ -1,4 +1,4 @@
-510b83efe9a2293df8ea90edc49b84b8 *DESCRIPTION
+f0abacdae104da3c2a2408d58277183d *DESCRIPTION
 1fb0e0322decc7aaab8e3e81a78a0b4a *NAMESPACE
 6afc9e3d3fe8f0fa922272ed38d2dc48 *R/directExplorer2d.R
 27a3c377345c2c05e234891298908f5b *R/directPA.R
@@ -24,7 +24,7 @@ dbe124a5badd6149b55c1e39b62a1a09 *man/PhosphoELM.mouse.Rd
 01be5f9f5e9f313ccebf5686dd184a8c *man/PhosphoSite.human.Rd
 10278903a31c82ef9144807b6bc4bd6a *man/PhosphoSite.mouse.Rd
 2c609fbface26ef18a02e3805eb11e0d *man/directExplorer2d.Rd
-ae558be839eb2049322f059f1f1862b5 *man/directPA-package.Rd
+75049152c7d657a098b721e13bf24096 *man/directPA-package.Rd
 d67ca53236bea53f509874d585431e71 *man/directPA.Rd
 c94ec7bad5cda2a1f6876dd47c71b894 *man/geneStats.Rd
 eeb98e0c76863283244c60f8f02f9026 *man/kinasePA.Rd
